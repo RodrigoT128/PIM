@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./conteudo.css">
+  <title>CodeGuard</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="navBg">
+      <nav class="navBar">
+        <div class="navBarTitle">
+          <a href="./index.html">CodeGuard</a>
+        </div>
+        <div class="navBarLinks">
+          <a href="../cursos/cursos.html">Cursos</a>
+          <a href="./login.html">Dashboard</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">1.</span>Introdução à linguagem Python</h2>
+      <p>Python é uma linguagem de programação de alto nível, criada por Guido van Rossum e lançada em 1991. Desde então, ela se tornou uma das linguagens mais populares do mundo devido à sua simplicidade, clareza e versatilidade. Seu nome, inclusive, é uma homenagem ao grupo de comédia britânico Monty Python, o que reflete o espírito leve e acessível da linguagem.</p>
+      <p>O principal diferencial de Python está na sua sintaxe enxuta e legível, que permite escrever menos código para fazer mais. Por isso, ela é uma das melhores opções para quem está começando a programar. Ao contrário de outras linguagens que exigem muita atenção a detalhes técnicos desde o início, Python foca no essencial: o raciocínio lógico por trás do código.</p>
+    </div>
+    <div class="card">
+    <h2 class="conteudoTitulo"><span class="numero">2.</span>Para que serve Python e por que aprender</h2>
+      <p>Python é extremamente versátil. Com ela, é possível desenvolver sites, criar automações, analisar dados, treinar modelos de inteligência artificial, programar jogos, trabalhar com APIs e muito mais. Ela está presente em diversas áreas do mercado, incluindo bancos, startups, empresas de tecnologia, instituições de ensino e órgãos públicos.</p>
+      <p>Além disso, Python conta com uma comunidade ativa e uma grande variedade de bibliotecas prontas, como Flask e Django para web, Pandas e NumPy para dados, e TensorFlow para inteligência artificial. Isso facilita muito o desenvolvimento de projetos, pois boa parte das soluções já existe e pode ser reaproveitada.</p>
+      <p>Aprender Python é um ótimo passo para quem quer entrar no universo da tecnologia. Seja para seguir carreira como desenvolvedor, cientista de dados, analista ou só para resolver problemas do dia a dia com automação, Python oferece um caminho acessível, poderoso e cheio de possibilidades.</p>
+    </div>
+    <div class="curiosidade">
+      💡 Python foi criado no final dos anos 1980 e ainda é uma das linguagens mais usadas no mundo!
+    </div>
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">3.</span>Python no dia a dia da tecnologia</h2>
+      <p>Python é considerada uma das linguagens mais práticas da atualidade, justamente por facilitar a criação de soluções rápidas e eficazes. Seu uso vai muito além do aprendizado inicial: grandes empresas como Google, Instagram, Netflix e Spotify usam Python em seus sistemas.</p>
+      <p>Seja para automatizar tarefas repetitivas, criar robôs para internet, construir servidores de aplicações web ou manipular grandes volumes de dados, Python está presente em diversos processos que fazem a tecnologia moderna funcionar. Além disso, sua integração com outras linguagens e plataformas a torna ainda mais poderosa, permitindo que o desenvolvedor use Python como base para projetos complexos./p>
+      <p>Aprender Python é aprender a conversar com a tecnologia de maneira eficiente e direta.</p>
+    </div>
+    <div class="card">
+    <h2 class="conteudoTitulo"><span class="numero">4.</span>Python como ferramente de aprendizado</h2>
+      <p>Python não é só uma linguagem usada no mercado — ela também é uma poderosa ferramenta de aprendizado. Por ser intuitiva e ter uma curva de aprendizado mais suave, ela é frequentemente adotada em escolas, universidades e cursos técnicos para ensinar lógica de programação, algoritmos e estrutura de dados.</p>
+      <p>Ao focar menos em sintaxe complicada e mais na resolução de problemas, Python permite que os alunos se concentrem no raciocínio por trás do código. Isso desenvolve habilidades fundamentais como organização, clareza de pensamento, capacidade de abstração e análise de situações reais.</p>
+      <p>Por isso, aprender Python ajuda não apenas a entender a linguagem, mas a pensar de forma lógica e estruturada — algo essencial em qualquer área da vida.</p>
+    </div>
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">5.</span>O crescimento e impacto de Python no mercado</h2>
+      <p>Nos últimos anos, Python se consolidou como uma das linguagens mais requisitadas pelo mercado de tecnologia. Sua presença constante em rankings como o TIOBE Index e Stack Overflow Developer Survey confirma sua importância global. Empresas procuram profissionais com domínio de Python porque sabem que é uma linguagem poderosa, confiável e com uma vasta gama de aplicações.</p>
+      <p>O crescimento das áreas de ciência de dados, inteligência artificial e automação impulsionou ainda mais a procura por quem domina essa linguagem. E como ela é compatível com diversas plataformas, de computadores pessoais a servidores em nuvem, seu alcance só tende a crescer.</p>
+      <p>Dominar Python hoje é abrir portas para múltiplas possibilidades no futuro da tecnologia.</p>
+  </main>
+
+  <footer class="footer">
+    <p>CodeGuard 2025 ©. Alguns Direitos Reservados.</p>
+  </footer>
+</body>
+
+<script>
+async function carregarProgresso() {
+  const params = new URLSearchParams(window.location.search);
+  const cursoId = params.get('curso_id');
+  const token = localStorage.getItem('accessToken');
+
+  const response = await fetch(`http://localhost:8000/api/progress/course/${cursoId}/`, {
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
+  });
+
+  const data = await response.json();
+  const div = document.getElementById('progresso');
+  div.innerHTML = `
+    <p><strong>Curso:</strong> ${data.course}</p>
+    <p><strong>Conteúdos Concluídos:</strong> ${data.completed_contents} de ${data.total_contents}</p>
+    <p><strong>Porcentagem:</strong> ${data.completion_percent}%</p>
+  `;
+}
+
+carregarProgresso();
+</script>

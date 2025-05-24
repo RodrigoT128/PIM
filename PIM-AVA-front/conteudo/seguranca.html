@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./conteudo.css">
+  <title>CodeGuard</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="navBg">
+      <nav class="navBar">
+        <div class="navBarTitle">
+          <a href="./index.html">CodeGuard</a>
+        </div>
+        <div class="navBarLinks">
+          <a href="../cursos/cursos.html">Cursos</a>
+          <a href="./login.html">Dashboard</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">1.</span>O que é Segurança Digital</h2>
+      <p>Segurança Digital é o conjunto de práticas, ferramentas e comportamentos que visam proteger informações, dispositivos e redes contra acessos não autorizados, vazamentos e ataques virtuais. Em um mundo cada vez mais conectado, onde usamos a internet para estudar, trabalhar, fazer compras e até cuidar da saúde, manter os dados seguros é essencial.</p>
+      <p>Essa segurança envolve desde o uso de senhas fortes até o reconhecimento de ameaças como vírus, fraudes e golpes digitais. Também inclui medidas mais técnicas, como criptografia, firewalls e sistemas de autenticação. A Segurança Digital protege não apenas máquinas, mas também a privacidade e os direitos das pessoas.</p>  
+    </div>
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">2.</span>Por que a Segurança Digital é importante</h2>
+      <p>Proteger informações pessoais, como CPF, número de cartão, senhas ou localização, é tão importante quanto trancar a porta de casa. Sem medidas de segurança digital, estamos vulneráveis a invasões, fraudes financeiras e roubo de identidade. Ataques cibernéticos podem afetar tanto pessoas quanto empresas, trazendo prejuízos financeiros, danos à reputação e até problemas legais.</p>
+      <p>Além disso, com o avanço da tecnologia, até equipamentos domésticos (como câmeras, smart TVs e roteadores) podem ser alvos de ataques. Por isso, entender os riscos e adotar hábitos seguros ao navegar na internet é algo que todos — independentemente da idade ou profissão — precisam aprender.</p>
+    </div>
+    <div class="curiosidade">
+      💡 Você sabia? O primeiro vírus de computador do mundo foi criado em 1986 e se chamava Brain. Ele foi desenvolvido por dois irmãos do Paquistão como uma forma de alertar sobre cópias não autorizadas de software.
+    </div>
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">3.</span>Boas práticas para se proteger online</h2>
+      <p>Existem várias atitudes simples que ajudam a manter a segurança no ambiente digital. Usar senhas fortes e diferentes para cada conta, não clicar em links suspeitos, manter antivírus atualizado, ativar a autenticação em dois fatores e fazer backup regular dos dados são algumas das práticas recomendadas.</p>
+      <p>Evitar usar redes Wi-Fi públicas sem proteção, desconfiar de e-mails com pedidos urgentes e manter os dispositivos atualizados também são formas eficientes de prevenir ataques. A segurança online depende de ferramentas, mas também — e principalmente — de comportamento consciente.</p>
+    </div>
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">4.</span>Segurança Digital e a vida cotidiana</h2>
+      <p>A Segurança Digital está presente em situações simples do nosso dia a dia. Quando acessamos o banco pelo celular, salvamos fotos na nuvem, usamos aplicativos de transporte ou estudamos pela internet, estamos lidando com dados sensíveis. Esses dados precisam ser protegidos contra acessos não autorizados ou usos indevidos.</p>
+      <p>Entender como funciona a proteção dessas informações — e o que você pode fazer para evitar vazamentos — é fundamental para navegar com mais tranquilidade. Ao adotar hábitos seguros, o usuário ganha mais liberdade e confiança para aproveitar os recursos que a tecnologia oferece.</p>
+      </div>
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">5.</span>Segurança Digital e a LGPD</h2>
+      <p>Com a criação da Lei Geral de Proteção de Dados (LGPD), a Segurança Digital ganhou ainda mais importância no Brasil. A LGPD determina que qualquer organização que coleta dados pessoais deve garantir sua proteção e só pode usá-los com o consentimento do titular. Isso vale para escolas, sites, redes sociais, aplicativos e empresas em geral.</p>
+      <p>A lei fortalece o direito à privacidade e incentiva o uso consciente da tecnologia. Para os usuários, é um alerta sobre o valor de suas informações. Para empresas e profissionais, é uma responsabilidade legal. A Segurança Digital, nesse contexto, deixa de ser opcional e passa a ser parte essencial da cidadania digital.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>CodeGuard 2025 ©. Alguns Direitos Reservados.</p>
+  </footer>
+</body>
+
+<script>
+async function carregarProgresso() {
+  const params = new URLSearchParams(window.location.search);
+  const cursoId = params.get('curso_id');
+  const token = localStorage.getItem('accessToken');
+
+  const response = await fetch(`http://localhost:8000/api/progress/course/${cursoId}/`, {
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
+  });
+
+  const data = await response.json();
+  const div = document.getElementById('progresso');
+  div.innerHTML = `
+    <p><strong>Curso:</strong> ${data.course}</p>
+    <p><strong>Conteúdos Concluídos:</strong> ${data.completed_contents} de ${data.total_contents}</p>
+    <p><strong>Porcentagem:</strong> ${data.completion_percent}%</p>
+  `;
+}
+
+carregarProgresso();
+</script>

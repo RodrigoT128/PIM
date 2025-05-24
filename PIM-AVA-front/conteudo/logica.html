@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./conteudo.css">
+  <title>CodeGuard</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="navBg">
+      <nav class="navBar">
+        <div class="navBarTitle">
+          <a href="./index.html">CodeGuard</a>
+        </div>
+        <div class="navBarLinks">
+          <a href="../cursos/cursos.html">Cursos</a>
+          <a href="./login.html">Dashboard</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">1.</span>O que é Lógica Computacional</h2>
+      <p>Lógica Computacional é a base do pensamento estruturado necessário para programar e resolver problemas com o auxílio da tecnologia. Ela envolve o uso de raciocínio lógico para criar sequências de ações, chamadas algoritmos, que levam a um resultado desejado. Na prática, é o que permite construir programas de computador que tomam decisões, seguem condições e executam tarefas repetidas com precisão.</p>
+      <p>Ao desenvolver a lógica computacional, o aluno aprende a pensar de forma mais clara, organizada e eficiente, habilidades que vão muito além da programação e podem ser aplicadas em qualquer área da vida.</p>
+    </div>
+    <div class="card">
+    <h2 class="conteudoTitulo"><span class="numero">2.</span>Por que aprender Lógica Computacional</h2>
+      <p>Aprender lógica computacional é o primeiro passo para quem deseja entrar no mundo da programação e da tecnologia. Sem ela, é impossível entender como um programa funciona ou como transformar uma ideia em código. A lógica está por trás de tudo: desde uma simples calculadora até sistemas de inteligência artificial.</p>
+      <p>Mais do que escrever comandos, programar exige saber como pensar o problema, dividir em partes, criar instruções claras e prever comportamentos. Por isso, a lógica computacional é tão valorizada — ela prepara a mente para pensar como um desenvolvedor e resolver desafios com eficiência.</p>
+    </div>
+    <div class="curiosidade">
+      💡 Curiosidade: Resolver problemas usando lógica computacional é parecido com montar um quebra-cabeça: você precisa encaixar as peças (passos) certas, na ordem correta, para chegar à solução final.
+    </div>
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">3.</span>Como a lógica computacional é aplicada</h2>
+      <p>A lógica computacional está presente em algoritmos, estruturas de decisão (como “se... então... senão”), repetições (“enquanto” ou “para”), comparações, operadores lógicos (como E, OU, NÃO) e no planejamento passo a passo das tarefas. Esses elementos são fundamentais para qualquer linguagem de programação.</p>
+      <p>Ao desenvolver um sistema, um site, um jogo ou até mesmo um robô, é a lógica computacional que determina o comportamento do programa. Ela define o que deve acontecer, em que ordem, e sob quais condições. Ou seja, é o cérebro por trás da tecnologia.</p>
+    </div>
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">4.</span>Lógica computacional na educação</h2>
+      <p>A lógica computacional vem sendo cada vez mais usada como ferramenta pedagógica em escolas e projetos educacionais. Ao introduzir esses conceitos desde cedo, os alunos desenvolvem habilidades como concentração, resolução de problemas, criatividade e pensamento crítico.</p>
+      <p>Mesmo sem escrever código diretamente, atividades com blocos de programação (como Scratch) ou desafios de raciocínio lógico já ajudam a formar essa base. Ensinar lógica computacional não é ensinar só tecnologia — é ensinar a pensar melhor.</p>
+    </div>
+    <div class="card">
+      <h2 class="conteudoTitulo"><span class="numero">5.</span>Lógica computacional e o cotidiano</h2>
+      <p>A lógica computacional não serve apenas para programar computadores. Ela pode ser aplicada em diversas situações do cotidiano: desde planejar um trajeto, montar um cronograma de estudos, até entender como funciona uma receita de bolo. Tudo isso envolve seguir passos, considerar condições e tomar decisões — exatamente como se faz ao escrever um algoritmo.</p>
+      <p>Por isso, desenvolver a lógica computacional é útil para qualquer pessoa, mesmo que ela não queira seguir carreira na área de tecnologia. Pensar com clareza, prever consequências e organizar ideias são habilidades que fazem diferença em qualquer profissão e em qualquer fase da vida.</p>
+    </div> 
+  </main>
+  
+  <footer class="footer">
+    <p>CodeGuard 2025 ©. Alguns Direitos Reservados.</p>
+  </footer>
+</body>
+
+<script>
+async function carregarProgresso() {
+  const params = new URLSearchParams(window.location.search);
+  const cursoId = params.get('curso_id');
+  const token = localStorage.getItem('accessToken');
+
+  const response = await fetch(`http://localhost:8000/api/progress/course/${cursoId}/`, {
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
+  });
+
+  const data = await response.json();
+  const div = document.getElementById('progresso');
+  div.innerHTML = `
+    <p><strong>Curso:</strong> ${data.course}</p>
+    <p><strong>Conteúdos Concluídos:</strong> ${data.completed_contents} de ${data.total_contents}</p>
+    <p><strong>Porcentagem:</strong> ${data.completion_percent}%</p>
+  `;
+}
+
+carregarProgresso();
+</script>

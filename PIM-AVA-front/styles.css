@@ -1,0 +1,134 @@
+:root {
+  --primaria: #7c3aed;
+  --secundaria: #1f1f1f;
+  --fundoclaro: #DCDCDC;
+  --textsec: #2e2e2e;
+  --hover: #5b21b6;
+  --info: #6366f1;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", "Helvetica Neue", sans-serif;
+  display: grid;
+  gap: 45px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--fundoclaro);
+}
+
+.navBg {
+  background-color: var(--secundaria);
+}
+
+.navBar {
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navBarTitle a {
+  font-size: 16px;
+  color: var(--primaria);
+  font-size: 20px;
+}
+
+.navBarTitle a:hover {
+  color: var(--hover);
+  transition: background-color 0.3s ease
+}
+
+.navBarLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.navBarLinks a {
+  font-size: 16px;
+  color: var(--fundoclaro);
+}
+
+.navBarLinks a:hover {
+  color: var(--primaria);
+  transition: background-color 0.3s ease
+}
+
+.cursos {
+  max-width: 1100px;
+  display: grid;
+  gap: 30px;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.apresentacao {
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.apresentacao h1 {
+  font-size: 36px;
+  padding: 30px 0px;
+}
+
+.apresentacao p,
+.apresentacao a {
+  font-size: 18px;
+  padding-bottom: 40px;
+}
+
+.apresentacao a {
+  display: inline-block;
+  background-color: var(--primaria);
+  color: var(--secundaria);
+  padding: 10px 20px;
+  border-radius: 8px;
+  align-self: center;
+}
+
+.apresentacao a:hover {
+  background-color: var(--hover);
+  color: var(--fundoclaro);
+  transition: background-color 0.3s ease
+}
+
+.card {
+  padding: 20px 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primaria);
+}
+
+.card p {
+  font-size: 15px;
+}
+
+.card a {
+  display: inline-block;
+  background-color: var(--primaria);
+  color: var(--secundaria);
+  padding: 10px 20px;
+  border-radius: 8px;
+  align-self: center;
+}
+
+.card a:hover {
+  background-color: var(--hover);
+  color: var(--fundoclaro);
+  transition: background-color 0.3s ease
+}
+
+
+.footer {
+  color: var(--hover);
+}

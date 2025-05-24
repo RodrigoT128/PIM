@@ -1,0 +1,98 @@
+:root {
+  --primaria: #7c3aed;
+  --secundaria: #1f1f1f;
+  --fundoclaro: #DCDCDC;
+  --textsec: #2e2e2e;
+  --hover: #5b21b6;
+  --info: #6366f1;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", "Helvetica Neue", sans-serif;
+  display: grid;
+  gap: 45px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--fundoclaro);
+}
+
+.navBg {
+  background-color: var(--secundaria);
+}
+
+.navBar {
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navBarTitle a {
+  font-size: 16px;
+  color: var(--primaria);
+  font-size: 20px;
+}
+
+.navBarTitle a:hover {
+  color: var(--hover);
+}
+
+.navBarLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.navBarLinks a {
+  font-size: 16px;
+  color: var(--fundoclaro);
+}
+
+.navBarLinks a:hover {
+  color: var(--primaria);
+}
+
+.login-container {
+  margin: 15.625em auto;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-container h2 {
+  text-align: center;
+  color: var(--texto);
+  margin-bottom: 24px;
+}
+
+.login-container input[type="password"],
+.login-container input[type="email"] {
+  width: 94%;
+  padding: 12px;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primaria);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+  background-color: #6b21a8;
+}
+

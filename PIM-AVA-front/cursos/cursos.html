@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="../cursos/cursos.css">
+  <title>CodeGuard</title>
+</head>
+
+<header>
+  <div class="navBg">
+    <nav class="navBar">
+      <div class="navBarTitle">
+        <a href="../index.html">CodeGuard</a>
+      </div>
+      <div class="navBarLinks">
+        <a href="../alunos/#">Dashboard</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="conteudoCursos">
+    <div class="cursos">
+      <h2>Lógica Computacional</h2>
+      <h3>A ponte entre o pensamento lógico e a máquina</h3>
+      <p>Linguagem computacional é a forma como nos comunicamos com os computadores por meio de instruções organizadas e lógicas. Ela permite transformar ideias em algoritmos e algoritmos em código, sendo essencial para que máquinas compreendam e executem tarefas.
+
+        Aprender linguagem computacional desenvolve o raciocínio lógico, a resolução de problemas e a capacidade de pensar de forma estruturada. Não se trata apenas de programar, mas de compreender como organizar o pensamento para criar soluções eficientes. Ela está presente desde as linguagens visuais usadas por iniciantes até linguagens formais como Python, Java e C++.
+        
+        Entender linguagem computacional é entender como a tecnologia funciona — e mais do que isso, é começar a construí-la.</p>
+      <a href="../novaconta/novaconta.html">Aprender Algoritmo</a>
+    </div>  
+    <div class="cursos">
+      <h2>Python</h2>
+      <img src="#" alt="">
+      <h3>Uma linguagem acessível, poderosa e presente em todo lugar</h3>
+      <p>Python é uma linguagem de programação conhecida por sua simplicidade e legibilidade, o que a torna ideal tanto para iniciantes quanto para profissionais experientes. Com uma sintaxe clara e intuitiva, ela permite que ideias sejam transformadas em código de forma rápida e eficiente.
+        Muito usada no desenvolvimento web, automação de tarefas, análise de dados, inteligência artificial e ciência, Python se destaca por sua versatilidade e por uma enorme comunidade que compartilha bibliotecas e soluções prontas. Além disso, é uma das linguagens mais requisitadas pelo mercado, o que a torna uma excelente escolha para quem quer entrar no mundo da tecnologia.
+        Aprender Python é abrir portas para diversas áreas e entender, de forma prática, como a lógica computacional pode ser aplicada para resolver problemas reais.</p>
+      <a href="../novaconta/novaconta.html">Aprender Python</a>
+    </div> 
+    <div class="cursos">
+      <h2>Segurança Digital</h2>
+      <img src="../novaconta/novaconta.html" alt="">
+      <h3>Proteger dados é proteger pessoas</h3>
+      <p>Segurança Digital é o conjunto de práticas, ferramentas e conhecimentos voltados à proteção de dados e sistemas em ambientes conectados. Em um mundo cada vez mais digital, onde informações pessoais, financeiras e profissionais circulam constantemente, garantir a integridade e a privacidade dessas informações se tornou essencial.
+
+        Ela envolve o uso de senhas seguras, autenticação em dois fatores, backups, navegação consciente e o reconhecimento de ameaças como phishing, malwares e vazamento de dados. Além disso, está diretamente relacionada à LGPD (Lei Geral de Proteção de Dados), que estabelece direitos e deveres sobre o uso de informações pessoais.
+        
+        Aprender sobre segurança digital é mais do que proteger máquinas: é garantir a confiança, a liberdade e a responsabilidade no uso da tecnologia.</p>
+      <a href="../novaconta/novaconta.html">Aprender Segurança</a>
+    </div> 
+  </div>  
+</main>
+
+<footer class="footer">
+  <p>CodeGuard 2025 ©. Alguns Direitos Reservados.</p>
+</footer>
+
+<script>
+async function carregarCursos() {
+  const token = localStorage.getItem('accessToken');
+  const response = await fetch('http://localhost:8000/api/courses/', {
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
+  });
+
+  const cursos = await response.json();
+  const lista = document.getElementById('lista-cursos');
+  cursos.forEach(curso => {
+    const item = document.createElement('li');
+    item.innerHTML = `<a href="progresso.html?curso_id=${curso.id}">${curso.title}</a>`;
+    lista.appendChild(item);
+  });
+}
+
+carregarCursos();
+</script>

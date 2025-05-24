@@ -1,0 +1,116 @@
+:root {
+  --primaria: #7c3aed;
+  --secundaria: #1f1f1f;
+  --fundoclaro: #DCDCDC;
+  --textsec: #2e2e2e;
+  --hover: #5b21b6;
+  --info: #6366f1;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", "Helvetica Neue", sans-serif;
+  display: grid;
+  gap: 45px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--fundoclaro);
+}
+
+.navBg {
+  background-color: var(--secundaria);
+}
+
+.navBar {
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navBarTitle a {
+  font-size: 16px;
+  color: var(--primaria);
+  font-size: 20px;
+}
+
+.navBarTitle a:hover {
+  color: var(--hover);
+}
+
+.navBarLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.navBarLinks a {
+  font-size: 16px;
+  color: var(--fundoclaro);
+}
+
+.navBarLinks a:hover {
+  color: var(--primaria);
+}
+
+.conteudo {
+  margin: 0 auto;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.conteudoTitulo {
+  color: var(--primaria);
+}
+
+.conteudo p {
+  text-align: left;
+}
+
+.card {
+  background: #F3E8D4;
+  padding: 32px;
+  margin-bottom: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 24px;
+  color: var(--primaria);
+}
+
+.numero {
+  color: var(--hover);
+  margin-right: 8px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+.card:not(:last-child) {
+  border-bottom: 1px solid var(--primaria);
+}
+
+.footer {
+  color: var(--hover);
+}
+
+.curiosidade {
+  background: #F3E8D4;
+  border-left: 5px solid var(--primaria);
+  padding: 16px;
+  margin: 30px 0;
+  font-style: italic;
+  border-radius: 12px;
+}

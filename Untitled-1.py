@@ -1,1 +1,0 @@
-print("Bora tirar 10 nesse Pim")
