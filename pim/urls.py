@@ -5,15 +5,12 @@ from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/users/', include('users.urls')),
+    path('admin/', admin.site.urls), 
 
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'), 
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'), 
 
-    path('api/users/', include('users.urls')),
-    path('api/courses/', include('courses.urls')),
-
-    path('api/content/', include('content.urls')),
-    path('api/progress/', include('progress.urls')),
+    path('api/usuarios/', include('usuarios.urls')), 
+    path('api/cursos/', include('cursos.urls')), 
+    path('api/progresso/', include('progresso.urls')) 
 ]

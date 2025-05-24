@@ -76,6 +76,11 @@ async function carregarProgresso() {
     }
   });
 
+  const spans = document.querySelectorAll(".estatisticaLinha span:last-child");
+    spans[0].textContent = data.progress_percent + "%";
+    spans[1].textContent = data.study_time_hours + " h";
+    spans[2].textContent = data.last_access;
+
   const data = await response.json();
   const div = document.getElementById('progresso');
   div.innerHTML = `
