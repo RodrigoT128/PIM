@@ -68,11 +68,16 @@ async function carregarProgresso() {
   const cursoId = params.get('curso_id');
   const token = localStorage.getItem('accessToken');
 
-  const response = await fetch(`http://localhost:8000/api/progress/course/${cursoId}/`, {
+  const response = await fetch(`http://localhost:8000/api/progress/${cursoId}/`, {
     headers: {
       'Authorization': 'Bearer ' + token
     }
   });
+
+  const spans = document.querySelectorAll(".estatisticaLinha span:last-child");
+    spans[0].textContent = data.progress_percent + "%";
+    spans[1].textContent = data.study_time_hours + " h";
+    spans[2].textContent = data.last_access;
 
   const data = await response.json();
   const div = document.getElementById('progresso');
